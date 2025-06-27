@@ -1,0 +1,28 @@
+{
+  "tasks": [
+    {
+      "id": "a1b2",
+      "title": "Stworzyć nagłówek strony głównej",
+      "description": "Zaprojektować i wdrożyć responsywny nagłówek z menu nawigacyjnym",
+      "completed": false
+    },
+    {
+      "id": "c3d4",
+      "title": "Dodać sekcję 'O nas'",
+      "description": "Przygotować treść i stylizację sekcji o firmie na stronie głównej",
+      "completed": false
+    },
+    {
+      "id": "e5f6",
+      "title": "Zintegrować formularz kontaktowy",
+      "description": "Dodać formularz z walidacją i przesyłaniem danych do e-maila",
+      "completed": false
+    },
+    {
+      "id": "g7h8",
+      "title": "Uzupełnić metadane SEO",
+      "description": "Dodać tytuły, opisy i tagi alt do grafik",
+      "completed": false
+    }
+  ]
+}

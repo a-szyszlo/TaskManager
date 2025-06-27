@@ -1,0 +1,70 @@
+<div class="task-manager">
+  <h1>Task Manager</h1>
+
+  <mat-form-field appearance="outline" class="filter-field">
+    <mat-label>Filtruj zadania</mat-label>
+    <input matInput [formControl]="filterControl" placeholder="Wpisz frazę...">
+  </mat-form-field>
+
+  @if (isLoading) {
+    <div class="loading">Ładowanie...</div>
+  }
+
+  @if (!isLoading) {
+    <div class="task-list">
+      <table mat-table [dataSource]="filteredTasks" class="mat-elevation-z8">
+        <ng-container matColumnDef="title">
+          <th mat-header-cell *matHeaderCellDef>Tytuł</th>
+          <td mat-cell *matCellDef="let task">{{task.title}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="description">
+          <th mat-header-cell *matHeaderCellDef>Opis</th>
+          <td mat-cell *matCellDef="let task">{{task.description}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef>Akcje</th>
+          <td mat-cell *matCellDef="let task">
+            <button mat-icon-button color="primary" (click)="startEdit(task)">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button color="warn" (click)="deleteTask(task)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="['title', 'description', 'actions']"></tr>
+        <tr mat-row *matRowDef="let row; columns: ['title', 'description', 'actions'];"></tr>
+      </table>
+    </div>
+  }
+
+  <div class="task-form">
+    @if (editingTaskId === null) {
+      <h2>Dodaj nowe zadanie</h2>
+    }
+    @if (editingTaskId !== null) {
+      <h2>Edytuj zadanie</h2>
+    }
+
+    <mat-form-field appearance="outline">
+      <mat-label>Tytuł</mat-label>
+      <input matInput [formControl]="newTaskTitle" placeholder="Wpisz tytuł">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Opis</mat-label>
+      <textarea matInput [formControl]="newTaskDescription" placeholder="Opis zadania"></textarea>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="editingTaskId === null ? addTask() : saveEdit()">
+      {{ editingTaskId === null ? 'Dodaj zadanie' : 'Zapisz zmiany' }}
+    </button>
+
+    @if (editingTaskId !== null) {
+      <button mat-button (click)="cancelEdit()">Anuluj</button>
+    }
+  </div>
+</div>

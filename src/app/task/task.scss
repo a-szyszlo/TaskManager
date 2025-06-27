@@ -1,0 +1,44 @@
+:host {
+  display: block;
+  padding: 1rem;
+  max-width: 800px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+
+  .filter-field {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .loading {
+    text-align: center;
+    font-weight: bold;
+    margin: 1rem 0;
+  }
+
+  .task-list {
+    margin-bottom: 2rem;
+
+    table {
+      width: 100%;
+
+      th, td {
+        padding: 0.5rem;
+      }
+    }
+  }
+
+  .task-form {
+    display: flex;
+    flex-direction: column;
+
+    mat-form-field {
+      width: 100%;
+      margin-bottom: 1rem;
+    }
+
+    button {
+      margin-right: 1rem;
+    }
+  }
+}
